@@ -1,6 +1,6 @@
 # BEGIN: 9f8e7d6a4b3c
 import unittest
-import methods
+import Methods
 
 class TestMethods(unittest.TestCase):
     
@@ -11,13 +11,13 @@ class TestMethods(unittest.TestCase):
         b = 3
         expected_root = 2
         expected_iterations = 18
-        root, iterations = methods.bisection(expression, a, b)
+        root, iterations = Methods.bisection(expression, a, b)
         self.assertAlmostEqual(root, expected_root)
         self.assertEqual(iterations, expected_iterations)
         
         # Test case 2: Function with multiple roots
         import unittest
-        import methods
+        import Methods
 
         class TestMethods(unittest.TestCase):
             
@@ -28,7 +28,7 @@ class TestMethods(unittest.TestCase):
                 b = 3
                 expected_root = 2
                 expected_iterations = 18
-                root, iterations = methods.bisection(expression, a, b)
+                root, iterations = Methods.bisection(expression, a, b)
                 self.assertAlmostEqual(root, expected_root)
                 self.assertEqual(iterations, expected_iterations)
                 
@@ -38,7 +38,7 @@ class TestMethods(unittest.TestCase):
                 b = 4
                 expected_root = 1
                 expected_iterations = 18
-                root, iterations = methods.bisection(expression, a, b)
+                root, iterations = Methods.bisection(expression, a, b)
                 self.assertAlmostEqual(root, expected_root)
                 self.assertEqual(iterations, expected_iterations)
                 
@@ -47,28 +47,28 @@ class TestMethods(unittest.TestCase):
                 a = 0
                 b = 1
                 with self.assertRaises(ValueError):
-                    methods.bisection(expression, a, b)
+                    Methods.bisection(expression, a, b)
                 
                 # Test case 4: Function with opposite signs at a and b, but no root in the interval
                 expression = 'x**2 - 4'
                 a = 0
                 b = 1
                 with self.assertRaises(ValueError):
-                    methods.bisection(expression, a, b)
+                    Methods.bisection(expression, a, b)
                 
                 # Test case 5: Function with opposite signs at a and b, but no root within tolerance
                 expression = 'x**2 - 4'
                 a = 1
                 b = 3
                 with self.assertRaises(ValueError):
-                    methods.bisection(expression, a, b, tolerance=1e-10)
+                    Methods.bisection(expression, a, b, tolerance=1e-10)
                 
                 # Test case 6: Function with opposite signs at a and b, but max iterations reached
                 expression = 'x**2 - 4'
                 a = 1
                 b = 3
                 with self.assertRaises(ValueError):
-                    methods.bisection(expression, a, b, max_iterations=5)
+                    Methods.bisection(expression, a, b, max_iterations=5)
             
             def test_false_position(self):
                 # Test case 1: Simple function with one root
@@ -77,7 +77,7 @@ class TestMethods(unittest.TestCase):
                 b = 3
                 expected_root = 2
                 expected_iterations = 3
-                root, iterations = methods.false_position(expression, a, b)
+                root, iterations = Methods.false_position(expression, a, b)
                 self.assertAlmostEqual(root, expected_root)
                 self.assertEqual(iterations, expected_iterations)
                 
@@ -87,7 +87,7 @@ class TestMethods(unittest.TestCase):
                 b = 4
                 expected_root = 1
                 expected_iterations = 3
-                root, iterations = methods.false_position(expression, a, b)
+                root, iterations = Methods.false_position(expression, a, b)
                 self.assertAlmostEqual(root, expected_root)
                 self.assertEqual(iterations, expected_iterations)
                 
@@ -96,28 +96,28 @@ class TestMethods(unittest.TestCase):
                 a = 0
                 b = 1
                 with self.assertRaises(ValueError):
-                    methods.false_position(expression, a, b)
+                    Methods.false_position(expression, a, b)
                 
                 # Test case 4: Function with opposite signs at a and b, but no root in the interval
                 expression = 'x**2 - 4'
                 a = 0
                 b = 1
                 with self.assertRaises(ValueError):
-                    methods.false_position(expression, a, b)
+                    Methods.false_position(expression, a, b)
                 
                 # Test case 5: Function with opposite signs at a and b, but no root within tolerance
                 expression = 'x**2 - 4'
                 a = 1
                 b = 3
                 with self.assertRaises(ValueError):
-                    methods.false_position(expression, a, b, tolerance=1e-10)
+                    Methods.false_position(expression, a, b, tolerance=1e-10)
                 
                 # Test case 6: Function with opposite signs at a and b, but max iterations reached
                 expression = 'x**2 - 4'
                 a = 1
                 b = 3
                 with self.assertRaises(ValueError):
-                    methods.false_position(expression, a, b, max_iterations=5)
+                    Methods.false_position(expression, a, b, max_iterations=5)
             
             def test_steffensen(self):
                 # Test case 1: Simple function with one root
@@ -125,7 +125,7 @@ class TestMethods(unittest.TestCase):
                 x0 = 2
                 expected_root = 2
                 expected_iterations = 3
-                root, iterations = methods.steffensen(expression, x0)
+                root, iterations = Methods.steffensen(expression, x0)
                 self.assertAlmostEqual(root, expected_root)
                 self.assertEqual(iterations, expected_iterations)
                 
@@ -134,7 +134,7 @@ class TestMethods(unittest.TestCase):
                 x0 = 1
                 expected_root = 1
                 expected_iterations = 3
-                root, iterations = methods.steffensen(expression, x0)
+                root, iterations = Methods.steffensen(expression, x0)
                 self.assertAlmostEqual(root, expected_root)
                 self.assertEqual(iterations, expected_iterations)
                 
@@ -142,13 +142,13 @@ class TestMethods(unittest.TestCase):
                 expression = 'x**2 + 1'
                 x0 = 0
                 with self.assertRaises(ValueError):
-                    methods.steffensen(expression, x0)
+                    Methods.steffensen(expression, x0)
                 
                 # Test case 4: Function with no convergence
                 expression = 'x**2 - 4'
                 x0 = 1
                 with self.assertRaises(ValueError):
-                    methods.steffensen(expression, x0, max_iterations=5)
+                    Methods.steffensen(expression, x0, max_iterations=5)
             
             def test_newton_raphson(self):
                 # Test case 1: Simple function with one root
@@ -156,7 +156,7 @@ class TestMethods(unittest.TestCase):
                 x0 = 2
                 expected_root = 2
                 expected_iterations = 3
-                root, iterations = methods.newton_raphson(expression, x0)
+                root, iterations = Methods.newton_raphson(expression, x0)
                 self.assertAlmostEqual(root, expected_root)
                 self.assertEqual(iterations, expected_iterations)
                 
@@ -165,7 +165,7 @@ class TestMethods(unittest.TestCase):
                 x0 = 1
                 expected_root = 1
                 expected_iterations = 4
-                root, iterations = methods.newton_raphson(expression, x0)
+                root, iterations = Methods.newton_raphson(expression, x0)
                 self.assertAlmostEqual(root, expected_root)
                 self.assertEqual(iterations, expected_iterations)
                 
@@ -173,13 +173,13 @@ class TestMethods(unittest.TestCase):
                 expression = 'x**2 + 1'
                 x0 = 0
                 with self.assertRaises(ValueError):
-                    methods.newton_raphson(expression, x0)
+                    Methods.newton_raphson(expression, x0)
                 
                 # Test case 4: Function with no convergence
                 expression = 'x**2 - 4'
                 x0 = 1
                 with self.assertRaises(ValueError):
-                    methods.newton_raphson(expression, x0, max_iterations=5)
+                    Methods.newton_raphson(expression, x0, max_iterations=5)
 
 if __name__ == '__main__':
     unittest.main()
