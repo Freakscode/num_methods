@@ -40,7 +40,7 @@ def bisection(expression, main_interval, tolerance=1e-6, max_iterations=10000):
                 a = c
     
     if not roots:
-        raise ValueError("Bisection method did not find any roots within the specified number of iterations.")
+        return ("No se hallaron raíces en la cantidad de iteraciones especificadas")
     
     return {'Roots' : roots, 'Iterations' : iterations}
 

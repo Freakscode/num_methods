@@ -9,7 +9,7 @@ from decouple import config
 
 logging.basicConfig(level=logging.INFO, filename='app.log', format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
-app = FastAPI()
+app = FastAPI(debug=True)
 
 class expression(BaseModel):
     expression: str
@@ -20,19 +20,19 @@ class Interval(BaseModel):
     b: int
     x0: int
 
-# Configure CORS
+# Configura CORS
 origins = [
-    "http://localhost",
-    "http://localhost:8000",
-    config('FRONTEND_URL'),
+    "localhost:5173",
+    "localhost:8000"# Reemplaza con la URL de tu frontend
 ]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=["http://localhost:5173"],
     allow_credentials=True,
-    allow_methods=["*"],
+    allow_methods=["GET", "POST", "PUT", "DELETE"],
     allow_headers=["*"],
+    expose_headers=["Content-Disposition"],
 )
 
 app.title = "Metodos Numericos"
@@ -69,7 +69,7 @@ def get_method(id:int):
 #@app.get('/methods/{id}/help', tags = ['Methods'])
 
 @app.post('/methods/{id}/solve', tags = ['Methods'])
-def solve_method(id:int, interval: Interval):
+async def solve_method(id:int, interval: Interval):
     if id == 1:
         return bisection(interval.expression, [interval.a, interval.b])
     elif id == 2:

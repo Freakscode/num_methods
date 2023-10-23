@@ -1,6 +1,7 @@
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import HomePage from './pages/Homepage.tsx'
-import Methods from './pages/Methods.tsx'
+import Methods from './pages/methods/Methods.tsx'
+import Bisection from './pages/methods/bisection.tsx'
 
 function App() {
 
@@ -9,6 +10,7 @@ function App() {
       <Routes>
         <Route path ="/" element={<HomePage/>}/>
         <Route path ="/methods" element={<Methods/>}/>
+          <Route path="/methods/Bisection" element = {<Bisection/>}/>
       </Routes>
       </BrowserRouter>
   )
