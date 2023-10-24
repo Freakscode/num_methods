@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Navbar from '../components/Navbar.tsx';
 
 const Bisection = () => {
     const [expression, setExpression] = useState('');
@@ -45,24 +46,37 @@ const Bisection = () => {
 
     return (
         <div>
-            <input type="text" value={expression} onChange={(e) => setExpression(e.target.value)} placeholder="Expression" />
-            <input type="number" value={interval.a} onChange={(e) => setInterval({ ...interval, a: Number(e.target.value) })} placeholder="Interval Start" />
-            <input type="number" value={interval.b} onChange={(e) => setInterval({ ...interval, b: Number(e.target.value) })} placeholder="Interval End" />
-            <button onClick={solveBisection}>Solve</button>
-            <p>{status}</p>
-            {result !== null ? (
+            <header>
+                <Navbar />
+            </header>
+            <div className='w-screen h-screen bg-primary'>
+
                 <div>
-                    <h2>Results</h2>
-                    {result.Roots.length > 0 ? (
-                        <div>
-                            <p>Roots: {result.Roots.join(', ')}</p>
-                            <p>Iterations: {result.Iterations.join(', ')}</p>
-                        </div>
-                    ) : (
-                        <p>No se hallaron raíces en la cantidad de iteraciones especificadas</p>
-                    )}
+                <input type="text" value={expression} onChange={(e) => setExpression(e.target.value)} placeholder="Expression" />
                 </div>
-            ) : null}
+                <div>
+                <input type="number" value={interval.a} onChange={(e) => setInterval({ ...interval, a: Number(e.target.value) })} placeholder="Interval Start" />
+                <input type="number" value={interval.b} onChange={(e) => setInterval({ ...interval, b: Number(e.target.value) })} placeholder="Interval End" />
+                </div>
+                <div>
+                <button onClick={solveBisection}>Solve</button>
+                </div>
+                
+                <p>{status}</p>
+                {result !== null ? (
+                    <div>
+                        <h2>Results</h2>
+                        {result.Roots.length > 0 ? (
+                            <div>
+                                <p>Roots: {result.Roots.join(', ')}</p>
+                                <p>Iterations: {result.Iterations.join(', ')}</p>
+                            </div>
+                        ) : (
+                            <p>No se hallaron raíces en la cantidad de iteraciones especificadas</p>
+                        )}
+                    </div>
+                ) : null}
+            </div>
         </div>
     );
 };
