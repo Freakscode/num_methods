@@ -3,12 +3,12 @@ import logo from '../imgs/OIG.jpg'
 
 function Navbar() {
   return (
-    <nav className="bg-neutral text-white p-4">
+    <nav className="w-screen bg-neutral text-white p-4">
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo */}
         <div className="flex items-center">
           <img src={logo} alt="Logo" className="w-20 h-20 rounded-full" />
-          <span className="text-6xl font-sans px-5 ml-2">MetNum</span>
+          <span className="text-6xl font-sans px-5 ml-2"><a href='/'>MetNum</a></span>
         </div>
 
         {/* Botones de navegación */}
